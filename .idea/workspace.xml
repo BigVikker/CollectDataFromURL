@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a57322dc-be3c-406f-b4b6-6f50cf97ff52" name="Default Changelist" comment="Release 0.0.1">
+    <list default="true" id="a57322dc-be3c-406f-b4b6-6f50cf97ff52" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593502172341</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Release 0.0.1">
+      <created>1593503117620</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593503117620</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -146,10 +153,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="444" y="168" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1592320606205" />
-    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1593502304745">
+    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1593503114714">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593502304745" />
+    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593503114714" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1593444191753">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
