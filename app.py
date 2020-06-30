@@ -27,7 +27,12 @@ def index():
         else:
             # cac nhiem vu lien quan su dung den thu vien
             article = Article(url)
-            article.download()
+            # tai dau bao ve
+            try:
+                article.download()
+            except:
+                return render_template('index.html', stringResult="err 404")
+            # phan tich
             article.parse()
             stringResult = article.title
             # mo file recordFile.text
@@ -48,6 +53,8 @@ def index():
         # neu mothed = "Post" thi render file index.html trong template
         return render_template('index.html')
 
+
+# them trang web thu them tu cac trang chu
 @app.route('/thuTapTuTrang', methods=['GET', 'POST'])
 def multi():
     # neu website tra du lieu co method = "POST" thi thuc hien
@@ -63,17 +70,20 @@ def multi():
         # neu bien url la link url
 
         else:
-            # cac nhiem vu lien quan su dung den thu vien
+            # lay tat ca cac link trong link url
             paper = newspaper.build(url)
             for article in paper.articles:
-                article.download()
+                try:
+                    article.download()
+                except:
+                    continue
                 article.parse()
-                print(article.title)
+                # print(article.title)
                 listResult.append(article.title)
                 file = open("recordFile.txt", "a")
                 file.write(unidecode(article.title) + "\n")
                 file.close()
-        return render_template('multi.html', stringResult=listResult)
+        return render_template('multi.html', stringResult=listResult.count())
     else:
         # neu mothed = "Post" thi render file index.html trong template
         return render_template('multi.html')

@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<h1 style="text-align: center">
+    Thu Thập Dữ Liệu Triệt Để
+</h1>
 {% block body %}
 <div style="text-align: center;">
 <form action="/thuTapTuTrang" method="post">
-    <label> Nhập Link URL Báo Vào :</label>
+    <label> Nhập Link URL Báo Trang Chủ Vào :</label>
     <input type="text" name="url" />
     <input type="submit" value="OK" />
 </form>
@@ -16,7 +19,7 @@
 <br />
 
 <div style="text-align: center;">
-    <b>result :     {{stringResult}}</b>
+    <b>result số lượng thông tin đã thu thập được :     {{stringResult}}</b>
 </div>
 {% endif %}
 {% endblock %}
