@@ -4,7 +4,7 @@ import validators
 # them thu vien unidecode de chuan hoa khi ghi nhan vao file
 from unidecode import unidecode
 # thu vien flask de ploy san pham tren web
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, request_started
 # thu vien newspapper de lay du lieu ve
 from newspaper import Article
 
@@ -73,20 +73,58 @@ def multi():
             # lay tat ca cac link trong link url
             paper = newspaper.build(url)
             for article in paper.articles:
-                try:
-                    article.download()
-                except:
-                    continue
+                article.download()
                 article.parse()
-                # print(article.title)
                 listResult.append(article.title)
-                file = open("recordFile.txt", "a")
+                file = open("recordFileResult.txt.txt", "a")
                 file.write(unidecode(article.title) + "\n")
                 file.close()
-        return render_template('multi.html', stringResult=listResult.count())
+                file = open("recordFileUrl.txt", "a")
+                file.write(article.url + "\n")
+                file.close()
+            return render_template('multi.html', stringResult=listResult)
     else:
         # neu mothed = "Post" thi render file index.html trong template
         return render_template('multi.html')
+
+
+@app.route('/TimKiem', methods=['GET','POST'])
+def TrangTimKiem():
+    if request.method == 'POST':
+        url = request.form['url']
+        if (url == None):
+            return render_template('TrangTimKiem.html')
+        else:
+            readder = []
+            readderUrl = []
+            file = open("recordFileResult.txt.txt", "r")
+            dataFromFile = file.readline()
+            while dataFromFile:
+                readder.append(dataFromFile.strip())
+                dataFromFile = file.readline()
+
+            file.close()
+            file = open("recordFileUrl.txt", "r")
+            dataFromFileUrl = file.readline()
+            while dataFromFileUrl:
+                readderUrl.append(dataFromFileUrl.strip())
+                dataFromFileUrl = file.readline()
+            file.close()
+            SplitUrlLink = url.split()
+            resultString = []
+            resultStringUrl = []
+            for item in range(0,len(readder)):
+                count = 0
+                for conditions in SplitUrlLink:
+                    if readder[item].lower().find(unidecode(conditions.lower())) != -1:
+                        count = count + 1
+                if count > len(SplitUrlLink) / 2:
+                    resultString.append(readder[item])
+                    resultStringUrl.append(readderUrl[item])
+            return render_template('TrangTimKiem.html', len=len(resultString), stringResult=resultString, stringResultUrl=resultStringUrl)
+        return render_template('TrangTimKiem.html')
+    else:
+        return render_template('TrangTimKiem.html')
 
 
 if __name__ == '__main__':

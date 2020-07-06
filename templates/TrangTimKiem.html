@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Công Cụ Tìm Kiếm By BigVikker</title>
+    <meta>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<h1 style="text-align: center">
+    Tìm Kiếm
+</h1>
+<body>
+<div style="text-align: center;">
+<form action="/TimKiem" method="post">
+    <label> Tìm Kiếm :</label>
+    <input type="text" name="url" />
+    <input type="submit" value="OK" />
+</form>
+</div>
+
+<div>
+    {%if stringResult %}
+    <ul>
+        {%for i in range(0,len)%}
+        <li>
+            <a href="{{stringResultUrl[i] }}">
+                {{stringResult[i]}}
+            </a>
+        </li>
+        {%endfor%}
+    </ul>
+    {%endif%}
+</div>
+
+</body>
+
+</html>
