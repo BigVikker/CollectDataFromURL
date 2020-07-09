@@ -27,9 +27,8 @@ for i in firstInsertToList:
         if item == len(list) - 1:
             obj = Complex(i,1)
             list.append(obj)
-
-for i in readder:
-    obj_splitted = i.split()
+for i in range(1,len(readder)):
+    obj_splitted = readder[i].split()
     for item1 in obj_splitted:
         for item in range(0, len(list)):
             if list[item].name == item1:
@@ -39,12 +38,11 @@ for i in readder:
                 obj = Complex(item1, 1)
                 list.append(obj)
 
-max = 0
-for item in list:
-    if item.number > max:
-        max = item.number
-        obj_save = item
-print(obj_save.name , obj_save.number)
+list.sort(key=lambda x: x.number, reverse=True)
+
+
+for i in range(0,10):
+    print(list[i].name,list[i].number)
 
 
 
