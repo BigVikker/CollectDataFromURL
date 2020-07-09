@@ -2,35 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="https://github.com/BigVikker/CollectDataFromURL">
+    <meta name="author" content="Võ Sỹ Việt">
     <title>Công Cụ Tìm Kiếm By BigVikker</title>
     <meta>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cssStyle/bootstrap.min.css') }}">
 </head>
 <h1 style="text-align: center">
     Tìm Kiếm
 </h1>
 <body>
+<div style="text-align:right">
+    <a href="/thuTapTuTrang" class=" btn btn-warning">chuyển sảng thu thập Triệt để</a>
+</div>
 <div style="text-align: center;">
-<form action="/TimKiem" method="post">
-    <label> Tìm Kiếm :</label>
-    <input type="text" name="url" />
-    <input type="submit" value="OK" />
+<form action="/TimKiem" method="post" >
+<div class="row">
+  <div >
+    <label> Tìm Kiếm : </label>
+    <div class="input-group">
+
+      <input type="text" class="form-control" name="url" id="url" placeholder="Nhập Link Url">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit">Tìm Kiếm !</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 </form>
 </div>
 
+
 <div>
     {%if stringResult %}
-    <ul>
+    <div style="float:center; ">
+        Có {{len}} kết quả
+    </div>
+    <div>
+        <ul>
         {%for i in range(0,len)%}
-        <li>
-            <a href="{{stringResultUrl[i] }}">
+        <li class="alert alert-success">
+            <a href="{{stringResultUrl[i]}}">
                 {{stringResult[i]}}
             </a>
         </li>
         {%endfor%}
     </ul>
+    </div>
     {%endif%}
+
 </div>
+
 
 </body>
 

@@ -34,9 +34,14 @@ def index():
                 return render_template('index.html', stringResult="err 404")
             # phan tich
             article.parse()
+            print(article.publish_date)
             stringResult = article.title
+            # mo file recordFileUrl.text de luu link url
+            file = open("recordFileUrl.txt", "a")
+            file.write(url + "\n")
+            file.close()
             # mo file recordFile.text
-            file = open("recordFile.txt", "a")
+            file = open("recordFileResult.txt.txt", "a")
 
             try:
                 # luu lai du lieu da thu thap bang ghi vao file
@@ -48,7 +53,7 @@ def index():
                 # neu co trong qua trinh ghi file loi thi dong file
                 file.close()
             # tro ve file chay file index.html co vien tra ve stringResult trong file template
-            return render_template('index.html', stringResult=stringResult)
+            return render_template('index.html', stringResult=article.title)
     else:
         # neu mothed = "Post" thi render file index.html trong template
         return render_template('index.html')
@@ -82,7 +87,7 @@ def multi():
                 file = open("recordFileUrl.txt", "a")
                 file.write(article.url + "\n")
                 file.close()
-            return render_template('multi.html', stringResult=listResult)
+            return render_template('multi.html', stringResult=len(listResult))
     else:
         # neu mothed = "Post" thi render file index.html trong template
         return render_template('multi.html')
@@ -102,7 +107,6 @@ def TrangTimKiem():
             while dataFromFile:
                 readder.append(dataFromFile.strip())
                 dataFromFile = file.readline()
-
             file.close()
             file = open("recordFileUrl.txt", "r")
             dataFromFileUrl = file.readline()

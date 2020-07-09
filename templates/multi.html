@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <title>Title</title>
+    <meta name="description" content="https://github.com/BigVikker/CollectDataFromURL">
+    <meta name="author" content="Võ Sỹ Việt">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cssStyle/bootstrap.min.css') }}">
+    <title>Thu Thập Dũ Liệu Triệt Để</title>
 </head>
 <h1 style="text-align: center">
     Thu Thập Dữ Liệu Triệt Để
@@ -13,10 +15,19 @@
 </div>
 {% block body %}
 <div style="text-align: center;">
-<form action="/thuTapTuTrang" method="post">
-    <label> Nhập Link URL Báo Trang Chủ Vào :</label>
-    <input type="text" name="url" />
-    <input type="submit" value="OK" />
+<form action="/thuTapTuTrang" method="post" style="text-align: center">
+<div class="row">
+  <div>
+    <label> Nhập Link Url : </label>
+    <div class="input-group">
+
+      <input type="text" class="form-control" name="url" id="url" placeholder="Nhập Link Url">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit">Thu Thập !</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 </form>
 </div>
 {% if stringResult %}
@@ -26,6 +37,7 @@
     <b>result số lượng thông tin đã thu thập được :     {{stringResult}}</b>
 </div>
 {% endif %}
+
 {% endblock %}
 
 </html>

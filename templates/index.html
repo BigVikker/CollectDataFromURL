@@ -2,32 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta name="description" content="https://github.com/BigVikker/CollectDataFromURL">
+    <meta name="author" content="Võ Sỹ Việt">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cssStyle/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"-->
     <title>Thu Thập Dữ Liệu</title>
 </head>
-{% block body %}
+
+<body>
 <h1 style="text-align: center">
     Thu Thập Dữ Liệu
 </h1>
 <div style="text-align:right">
-    <a href="/thuTapTuTrang" class=" btn btn-success">chuyển sảng thu thập Triệt để</a>
+    <a href="/thuTapTuTrang" class=" btn btn-warning">chuyển sảng thu thập Triệt để</a>
+</div>
+<div style="text-align:right">
+    <a href="/TimKiem" class=" btn btn-success">Chuyển Sang Trang Tìm Kiếm</a>
 </div>
 <p />
 <p />
-<div style="text-align: center;">
-<form action="/" method="post">
-    <label> Nhập Link URL Báo Vào :</label>
-    <input type="text" name="url" />
-    <input type="submit" value="OK" />
+
+<form action="/" method="post" style="text-align: center">
+<div class="row">
+  <div >
+    <label> Nhập Link Url : </label>
+    <div class="input-group">
+
+      <input type="text" class="form-control" name="url" id="url" placeholder="Nhập Link Url">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="submit">Thu Thập !</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 </form>
-</div>
 {% if stringResult %}
 <br />
 
-<div style="text-align: center;">
+<div style="text-align: center;" class="alert alert-success" role="alert">
     <b>result :     {{stringResult}}</b>
 </div>
 {% endif %}
-{% endblock %}
+</body>
 
 </html>
