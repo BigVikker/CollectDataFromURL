@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="https://github.com/BigVikker/CollectDataFromURL">
+    <meta name="author" content="Võ Sỹ Việt">
+    <title>Công Cụ Tìm Kiếm By BigVikker</title>
+    <meta>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cssStyle/bootstrap.min.css') }}">
+</head>
+<h1 style="text-align: center">
+    Phân Tích Các Từ Khóa Có Nhiều Nhất Trong Data Đã Lấy
+</h1>
+<body><div style="text-align:right">
+    <a href="/thuTapTuTrang" class=" btn btn-warning">chuyển sảng thu thập Triệt để</a>
+</div>
+<div style="text-align:right">
+    <a href="/TimKiem" class=" btn btn-success">Chuyển Sang Trang Tìm Kiếm</a>
+</div>
+
+
+<div>
+    {%if stringResult %}
+    <div style="float:center; ">
+    </div>
+    <div>
+        <ul>
+        {%for i in range(0,10)%}
+        <li class="alert alert-success">
+            Từ Nhiều Nhất {{i}} :<strong>[ {{stringResult[i].name}} ] </strong>với lần xuât hiện {{stringResult[i].number}}
+        </li>
+        {%endfor%}
+    </ul>
+    </div>
+    {%endif%}
+
+</div>
+
+
+</body>
+
+</html>

@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a57322dc-be3c-406f-b4b6-6f50cf97ff52" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/PhanTich.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/TrangTimKiem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/TrangTimKiem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/multi.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/multi.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -25,7 +30,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectId" id="1W4TVjUOVFfYBJanxp86v8fKEsZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -53,7 +58,7 @@
       <recent name="C:\Users\conso\PycharmProjects\ggg" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Hallo" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -188,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594313323789</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="r1.0">
+      <created>1594315165887</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1594315165887</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -220,17 +232,18 @@
     <MESSAGE value="Release1" />
     <MESSAGE value="release" />
     <MESSAGE value="change" />
-    <option name="LAST_COMMIT_MESSAGE" value="change" />
+    <MESSAGE value="r1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="r1.0" />
   </component>
   <component name="WindowStateProjectService">
     <state x="444" y="168" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1594069693885">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="444" y="168" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1594069693885" />
-    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1594313314129">
+    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1594315162180">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1594313314129" />
+    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1594315162180" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1594067809253">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -239,22 +252,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592328983155" />
-    <state width="672" height="192" key="GridCell.Tab.0.bottom" timestamp="1594315017850">
+    <state width="672" height="192" key="GridCell.Tab.0.bottom" timestamp="1594363033521">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="672" height="192" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594315017850" />
-    <state width="672" height="192" key="GridCell.Tab.0.center" timestamp="1594315017849">
+    <state width="672" height="192" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594363033521" />
+    <state width="672" height="192" key="GridCell.Tab.0.center" timestamp="1594363033520">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="672" height="192" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594315017849" />
-    <state width="672" height="192" key="GridCell.Tab.0.left" timestamp="1594315017849">
+    <state width="672" height="192" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594363033520" />
+    <state width="672" height="192" key="GridCell.Tab.0.left" timestamp="1594363033520">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="672" height="192" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594315017849" />
-    <state width="672" height="192" key="GridCell.Tab.0.right" timestamp="1594315017850">
+    <state width="672" height="192" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594363033520" />
+    <state width="672" height="192" key="GridCell.Tab.0.right" timestamp="1594363033521">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="672" height="192" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594315017850" />
+    <state width="672" height="192" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594363033521" />
     <state width="672" height="223" key="GridCell.Tab.1.bottom" timestamp="1592334786549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -279,14 +292,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="98" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1594067855481" />
-    <state x="384" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1594305207890">
+    <state x="384" y="189" key="com.intellij.ide.util.TipDialog" timestamp="1594360963649">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="384" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1594305207890" />
-    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594315115189">
+    <state x="384" y="189" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1594360963649" />
+    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594363040386">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1594315115189" />
+    <state x="492" y="282" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1594363040386" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1592330803395">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

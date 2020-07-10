@@ -39,7 +39,7 @@ for i in range(1,len(readder)):
                 list.append(obj)
 
 list.sort(key=lambda x: x.number, reverse=True)
-
+list[:10]
 
 for i in range(0,10):
     print(list[i].name,list[i].number)
