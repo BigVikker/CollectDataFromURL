@@ -8,6 +8,38 @@ from flask import Flask, request, render_template, request_started
 # thu vien newspapper de lay du lieu ve
 from newspaper import Article
 
+from datetime import date
+import xml.etree.ElementTree as ET
+
+import xml.dom.minidom
+
+def insert_into_data(title,url_link,days):
+    item = ET.Element('item')
+    item1 = ET.SubElement(item, 'name')
+    item2 = ET.SubElement(item, 'url')
+    item3 = ET.SubElement(item, 'days')
+    item1.text = title
+    item2.text = url_link
+    item3.text = days
+
+    xml_tree = ET.parse("data.xml")
+    findElementAppend = xml_tree.find('items')
+    findElementAppend.append(item)
+
+    with open('data.xml', "wb") as f:
+        f.write(ET.tostring(xml_tree.getroot()))
+        f.close()
+
+    return
+
+
+
+
+
+
+
+
+
 app = Flask(__name__)
 
 # thu vien flask se mo local host , route dieu kien huong di
@@ -34,25 +66,13 @@ def index():
                 return render_template('index.html', stringResult="err 404")
             # phan tich
             article.parse()
-            print(article.publish_date)
             stringResult = article.title
             # mo file recordFileUrl.text de luu link url
-            file = open("recordFileUrl.txt", "a")
-            file.write(url + "\n")
-            file.close()
-            # mo file recordFile.text
-            file = open("recordFileResult.txt.txt", "a")
-
-            try:
-                # luu lai du lieu da thu thap bang ghi vao file
-                # unidecode de ma hoa sang bang chu cai tieng anh
-                file.write(unidecode(stringResult) + "\n")
-                # dong file
-                file.close()
-            except:
-                # neu co trong qua trinh ghi file loi thi dong file
-                file.close()
-            # tro ve file chay file index.html co vien tra ve stringResult trong file template
+            if article.publish_date == None:
+                insert_into_data(article.title, url, '2000-0-0')
+            else:
+                days = article.publish_date
+                insert_into_data(unidecode(stringResult), url, str(days)[0:10])
             return render_template('index.html', stringResult=article.title)
     else:
         # neu mothed = "Post" thi render file index.html trong template
@@ -67,7 +87,6 @@ def multi():
         # bien url lay du lieu tu from tro ve
         url = request.form['url']
         # kiem tra bien url co phai link url hay khong
-        listResult = []
 
         if not validators.url(url):
             # neu khong phai link url thi render file template co ten index.html
@@ -80,14 +99,12 @@ def multi():
             for article in paper.articles:
                 article.download()
                 article.parse()
-                listResult.append(article.title)
-                file = open("recordFileResult.txt.txt", "a")
-                file.write(unidecode(article.title) + "\n")
-                file.close()
-                file = open("recordFileUrl.txt", "a")
-                file.write(article.url + "\n")
-                file.close()
-            return render_template('multi.html', stringResult=len(listResult))
+                if article.publish_date == None:
+                    insert_into_data(article.title, article.url, '2010-01-01')
+                else:
+                    days = article.publish_date
+                    insert_into_data(article.title, article.url, str(days)[0:10])
+            return render_template('multi.html', stringResult=len(paper.articles))
     else:
         # neu mothed = "Post" thi render file index.html trong template
         return render_template('multi.html')
@@ -100,52 +117,41 @@ def TrangTimKiem():
         if (url == None):
             return render_template('TrangTimKiem.html')
         else:
-            readder = []
-            readderUrl = []
-            file = open("recordFileResult.txt.txt", "r")
-            dataFromFile = file.readline()
-            while dataFromFile:
-                readder.append(dataFromFile.strip())
-                dataFromFile = file.readline()
-            file.close()
-            file = open("recordFileUrl.txt", "r")
-            dataFromFileUrl = file.readline()
-            while dataFromFileUrl:
-                readderUrl.append(dataFromFileUrl.strip())
-                dataFromFileUrl = file.readline()
-            file.close()
-            SplitUrlLink = url.split()
+            mydoc = xml.dom.minidom.parse("data.xml");
+            urls = mydoc.getElementsByTagName('url')
+            titles = mydoc.getElementsByTagName('name')
+            filter_split = url.split()
             resultString = []
             resultStringUrl = []
-            for item in range(0,len(readder)):
+            for item in range(0,len(titles)):
                 count = 0
-                for conditions in SplitUrlLink:
-                    if readder[item].lower().find(unidecode(conditions.lower())) != -1:
+                for conditions in filter_split:
+                    if titles[item].firstChild.data.lower().find(conditions.lower()) != -1:
                         count = count + 1
-                if count > len(SplitUrlLink) / 2:
-                    resultString.append(readder[item])
-                    resultStringUrl.append(readderUrl[item])
+                    if count >= len(filter_split) / 2:
+                        resultString.append(titles[item].firstChild.data)
+                        resultStringUrl.append(urls[item].firstChild.data)
+                        break
             return render_template('TrangTimKiem.html', len=len(resultString), stringResult=resultString, stringResultUrl=resultStringUrl)
-        return render_template('TrangTimKiem.html')
     else:
         return render_template('TrangTimKiem.html')
 @app.route('/Analysis')
 def Analysis():
     class Complex:
-        def __init__(self, realpart, imagpart):
+        def __init__(self, realpart, numberPart):
             self.name = realpart
-            self.number = imagpart
+            self.number = numberPart
 
-    readder = []
+    readderFromFile = []
     file = open("recordFileResult.txt.txt", "r")
     dataFromFile = file.readline()
     while dataFromFile:
-        readder.append(dataFromFile.strip().lower())
+        readderFromFile.append(dataFromFile.strip().lower())
         dataFromFile = file.readline()
     file.close()
 
     list = []
-    firstInsertToList = readder[0].split()
+    firstInsertToList = readderFromFile[0].split()
     for i in firstInsertToList:
         if len(list) == 0:
             obj = Complex(i, 1)
@@ -159,8 +165,8 @@ def Analysis():
             if item == len(list) - 1:
                 obj = Complex(i, 1)
                 list.append(obj)
-    for i in range(1, len(readder)):
-        obj_splitted = readder[i].split()
+    for i in range(1, len(readderFromFile)):
+        obj_splitted = readderFromFile[i].split()
         for item1 in obj_splitted:
             for item in range(0, len(list)):
                 if list[item].name == item1:
