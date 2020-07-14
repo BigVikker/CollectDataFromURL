@@ -7,6 +7,7 @@ from unidecode import unidecode
 from flask import Flask, request, render_template, request_started
 # thu vien newspapper de lay du lieu ve
 from newspaper import Article
+import re
 
 from datetime import date
 import xml.etree.ElementTree as ET
@@ -72,7 +73,7 @@ def index():
                 insert_into_data(article.title, url, '2000-0-0')
             else:
                 days = article.publish_date
-                insert_into_data(unidecode(stringResult), url, str(days)[0:10])
+                insert_into_data(stringResult, url, str(days)[0:10])
             return render_template('index.html', stringResult=article.title)
     else:
         # neu mothed = "Post" thi render file index.html trong template
@@ -126,12 +127,12 @@ def TrangTimKiem():
             for item in range(0,len(titles)):
                 count = 0
                 for conditions in filter_split:
-                    if titles[item].firstChild.data.lower().find(conditions.lower()) != -1:
+                    if unidecode(titles[item].firstChild.data.lower()).find(unidecode(conditions.lower())) != -1:
                         count = count + 1
-                    if count >= len(filter_split) / 2:
+                    if count/len(filter_split) >= 0.5:
                         resultString.append(titles[item].firstChild.data)
                         resultStringUrl.append(urls[item].firstChild.data)
-                        break
+
             return render_template('TrangTimKiem.html', len=len(resultString), stringResult=resultString, stringResultUrl=resultStringUrl)
     else:
         return render_template('TrangTimKiem.html')
@@ -142,16 +143,10 @@ def Analysis():
             self.name = realpart
             self.number = numberPart
 
-    readderFromFile = []
-    file = open("recordFileResult.txt.txt", "r")
-    dataFromFile = file.readline()
-    while dataFromFile:
-        readderFromFile.append(dataFromFile.strip().lower())
-        dataFromFile = file.readline()
-    file.close()
-
+    mydoc = xml.dom.minidom.parse("data.xml");
+    readderFromFile = mydoc.getElementsByTagName('name')
     list = []
-    firstInsertToList = readderFromFile[0].split()
+    firstInsertToList = readderFromFile[0].firstChild.data.split()
     for i in firstInsertToList:
         if len(list) == 0:
             obj = Complex(i, 1)
@@ -165,8 +160,9 @@ def Analysis():
             if item == len(list) - 1:
                 obj = Complex(i, 1)
                 list.append(obj)
+
     for i in range(1, len(readderFromFile)):
-        obj_splitted = readderFromFile[i].split()
+        obj_splitted = readderFromFile[i].firstChild.data.split()
         for item1 in obj_splitted:
             for item in range(0, len(list)):
                 if list[item].name == item1:
@@ -177,7 +173,7 @@ def Analysis():
                     list.append(obj)
 
     list.sort(key=lambda x: x.number, reverse=True)
-    list[:10]
+    list = list[0:10]
 
     return render_template('PhanTich.html',stringResult=list)
 
