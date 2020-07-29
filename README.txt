@@ -1,6 +1,8 @@
 $ pip3 install newspaper3k
 $ pip install validation
 $ pip install unidecode
+$ pip install flask
+
 
 
 
