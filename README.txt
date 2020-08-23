@@ -9,16 +9,15 @@ $ pip install flask
 V2.0.0: run test.py
 
 test.py   : main
-recordFileResult.txt.txt    : data titiles
-recordFileUrl.txt   : data url
 
 
 V3.0.0: run app.py
 
 app.py   : main
-data.xml   : data
 
 
+
+in file articleData (all data i collected)
 
 in file TEMPLATES (all file html)
 

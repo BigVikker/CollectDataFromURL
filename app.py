@@ -27,7 +27,7 @@ def insert_into_data(title,url_link,days):
     findElementAppend = xml_tree.find('items')
     findElementAppend.append(item)
 
-    with open('data.xml', "wb") as f:
+    with open('articleData/data.xml', "wb") as f:
         f.write(ET.tostring(xml_tree.getroot()))
         f.close()
 
@@ -118,7 +118,7 @@ def TrangTimKiem():
         if (url == None):
             return render_template('TrangTimKiem.html')
         else:
-            mydoc = xml.dom.minidom.parse("data.xml");
+            mydoc = xml.dom.minidom.parse("articleData/data.xml");
             urls = mydoc.getElementsByTagName('url')
             titles = mydoc.getElementsByTagName('name')
             filter_split = url.split()
@@ -143,7 +143,7 @@ def Analysis():
             self.name = realpart
             self.number = numberPart
 
-    mydoc = xml.dom.minidom.parse("data.xml");
+    mydoc = xml.dom.minidom.parse("articleData/data.xml");
     readderFromFile = mydoc.getElementsByTagName('name')
     list = []
     firstInsertToList = readderFromFile[0].firstChild.data.split()

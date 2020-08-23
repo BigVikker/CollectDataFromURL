@@ -36,7 +36,7 @@ def index():
             article.parse()
             stringResult = article.title
             # mo file recordFile.text
-            file = open("recordFile.txt", "a")
+            file = open("articleData/recordFile.txt", "a")
 
             try:
                 # luu lai du lieu da thu thap bang ghi vao file
@@ -76,10 +76,10 @@ def multi():
                 article.download()
                 article.parse()
                 listResult.append(article.title)
-                file = open("recordFileResult.txt.txt", "a")
+                file = open("articleData/recordFileResult.txt.txt", "a")
                 file.write(unidecode(article.title) + "\n")
                 file.close()
-                file = open("recordFileUrl.txt", "a")
+                file = open("articleData/recordFileUrl.txt", "a")
                 file.write(article.url + "\n")
                 file.close()
             return render_template('multi.html', stringResult=listResult)
@@ -97,14 +97,14 @@ def TrangTimKiem():
         else:
             readder = []
             readderUrl = []
-            file = open("recordFileResult.txt.txt", "r")
+            file = open("articleData/recordFileResult.txt.txt", "r")
             dataFromFile = file.readline()
             while dataFromFile:
                 readder.append(dataFromFile.strip())
                 dataFromFile = file.readline()
 
             file.close()
-            file = open("recordFileUrl.txt", "r")
+            file = open("articleData/recordFileUrl.txt", "r")
             dataFromFileUrl = file.readline()
             while dataFromFileUrl:
                 readderUrl.append(dataFromFileUrl.strip())
@@ -133,7 +133,7 @@ def Analysis():
             self.number = numberPart
 
     readderFromFile = []
-    file = open("recordFileResult.txt.txt", "r")
+    file = open("articleData/recordFileResult.txt.txt", "r")
     dataFromFile = file.readline()
     while dataFromFile:
         readderFromFile.append(dataFromFile.strip().lower())
